@@ -14,11 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::view('/', 'welcome');
 Auth::routes();
 
-Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
+/* authenticated route */
+Route::middleware(['auth'])->group(function () {
+
+    Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
+    Route::get('customer', [App\Http\Controllers\CustomerController::class, 'index'])->name('customer');
+    Route::get('material', [App\Http\Controllers\MaterialController::class, 'index'])->name('material');
+});
