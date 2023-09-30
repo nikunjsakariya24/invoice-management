@@ -81,7 +81,7 @@ class InvoiceController extends Controller
 
         if ($request->submit_action === 'save-print') {
 
-            $this->print($invoice);
+            return $this->print($invoice);
         } elseif ($request->submit_action === 'save-send') {
 
             return $this->send($invoice);
@@ -154,7 +154,7 @@ class InvoiceController extends Controller
 
         if ($request->submit_action === 'save-print') {
 
-            $this->print($invoice);
+            return $this->print($invoice);
         } elseif ($request->submit_action === 'save-send') {
 
             return $this->send($invoice);
