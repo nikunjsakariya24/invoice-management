@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_images', function (Blueprint $table) {
+        Schema::create('invoices', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->string('image');
+            $table->string('invoice_number');
+            $table->date('date');
+            $table->foreignId('customer_id')->constrained('customers')->onDelete('cascade');
+            $table->decimal('subtotal', 10, 2);
             $table->timestamps();
         });
     }
@@ -24,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user_images');
+        Schema::dropIfExists('invoices');
     }
 };

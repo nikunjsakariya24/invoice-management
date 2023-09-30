@@ -17,7 +17,7 @@ class MaterialFactory extends Factory
     public function definition(): array
     {
         return [
-            'code' => $this->faker->unique()->word,
+            'code' => 'CO' . $this->faker->unique()->numberBetween(1, 9999),
             'name' => $this->faker->word,
             'price' => $this->faker->randomFloat(2, 1, 100),
         ];

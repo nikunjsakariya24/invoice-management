@@ -24,4 +24,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
     Route::get('customer', [App\Http\Controllers\CustomerController::class, 'index'])->name('customer');
     Route::get('material', [App\Http\Controllers\MaterialController::class, 'index'])->name('material');
+
+    Route::get('invoice/print/{invoice}', [App\Http\Controllers\InvoiceController::class, 'print'])->name('invoice.print');
+    Route::get('invoice/send/{invoice}', [App\Http\Controllers\InvoiceController::class, 'send'])->name('invoice.send');
+    Route::resource('invoice', App\Http\Controllers\InvoiceController::class);
 });
