@@ -14,6 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+Route::post('/storeMaterial', [App\Http\Controllers\APIs\InvoiceController::class, 'storeMaterial']);
+Route::post('/storeCustomer', [App\Http\Controllers\APIs\InvoiceController::class, 'storeCustomer']);
+Route::get('/getInvoice', [App\Http\Controllers\APIs\InvoiceController::class, 'getInvoice']);
+
